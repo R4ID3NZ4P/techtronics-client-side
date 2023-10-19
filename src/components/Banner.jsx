@@ -1,4 +1,4 @@
-import background from "../../public/banner.jpg"
+import background from "/banner.jpg?url"
 
 const Banner = () => {
     return (
