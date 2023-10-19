@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import AddProduct from "./components/AddProduct";
 import Cart from "./components/Cart";
+import PrivateRoute from "./components/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -17,7 +18,8 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: "/",
-				element: <Home></Home>
+				element: <Home></Home>,
+				loader: () => fetch("/data.json")
 			},
 			{
 				path: "/login",
@@ -29,11 +31,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/addproduct",
-				element: <AddProduct></AddProduct>
+				element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
 			},
 			{
 				path: "/cart",
-				element: <Cart></Cart>
+				element: <PrivateRoute><Cart></Cart></PrivateRoute>
 			}
 		]
     },

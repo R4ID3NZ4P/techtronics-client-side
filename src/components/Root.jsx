@@ -1,14 +1,18 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useState } from "react";
 
 
 const Root = () => {
+
+    const [theme, setTheme] = useState("light");
+
     return (
-        <div className="px-5 lg:px-32">
-            <Header></Header>
+        <div data-theme={theme}>
+            <Header theme={theme} setTheme={setTheme}></Header>
             <ToastContainer />
             <Outlet></Outlet>
             <Footer></Footer>

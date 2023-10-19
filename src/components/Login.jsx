@@ -29,7 +29,8 @@ const Login = () => {
         googleLogin()
             .then(() => {
                 toast("Successfully logged in!");
-                navigate("/");
+                if(location.state) navigate(location.state)
+                else navigate("/");
             });
     }
 
@@ -78,7 +79,7 @@ const Login = () => {
                         </div>
                         <h3 className="text-center my-2 text-sm">Or</h3>
                         <a className="btn btn-neutral" onClick={handleGoogleLogin}>Login with Google</a>
-                        <p className="text-xs">Don&apos;t have an account? <Link to={"/register"} className="text-red-500">Register</Link></p>
+                        <p className="text-xs">Don&apos;t have an account? <Link state={location.state} to={"/register"} className="text-cyan-500">Register</Link></p>
                     </form>
                 </div>
             </div>

@@ -1,11 +1,12 @@
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "./AuthProvider";
 
 const Register = () => {
     const { register, googleLogin, update } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,7 +34,9 @@ const Register = () => {
         else register(email, password)
             .then(() => {
                 toast("User successfully registered!");
-                update(name).then(() => navigate("/"));
+                update(name).then(() => {
+                    navigate("/");
+                });
                   
             })
             .catch((error) => {
@@ -45,7 +48,8 @@ const Register = () => {
         googleLogin()
             .then(() => {
                 toast("Successfully logged in!");
-                navigate("/");
+                if(location.state) navigate(location.state)
+                else navigate("/");
             });
     }
 
@@ -102,7 +106,7 @@ const Register = () => {
                         <a className="btn btn-neutral" onClick={handleGoogleLogin}>Login with Google</a>
                         <p className="text-xs">
                             Already have an account?{" "}
-                            <Link to={"/login"} className="text-red-500">
+                            <Link to={"/login"} className="text-cyan-500">
                                 Login
                             </Link>
                         </p>

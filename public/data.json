@@ -1,0 +1,32 @@
+[
+    {
+      "id": 1,
+      "brand": "Apple",
+      "logo": "/apple.jpg"
+    },
+    {
+      "id": 2,
+      "brand": "Google",
+      "logo": "/google.jpg"
+    },
+    {
+      "id": 3,
+      "brand": "Samsung",
+      "logo": "/samsung.jpg"
+    },
+    {
+      "id": 4,
+      "brand": "Xiaomi",
+      "logo": "/xiaomi.png"
+    },
+    {
+      "id": 5,
+      "brand": "Huawei",
+      "logo": "/huawei.png"
+    },
+    {
+      "id": 6,
+      "brand": "Nothing",
+      "logo": "/nothing.jpeg"
+    }
+]
