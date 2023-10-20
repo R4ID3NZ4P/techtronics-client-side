@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "./AuthProvider";
 
 const Register = () => {
-    const { register, googleLogin, update } = useContext(AuthContext);
+    const { user, register, googleLogin, update } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -35,7 +35,7 @@ const Register = () => {
             .then(() => {
                 toast("User successfully registered!");
                 update(name).then(() => {
-                    navigate("/");
+                    navigate(0);
                 });
                   
             })
@@ -51,6 +51,11 @@ const Register = () => {
                 if(location.state) navigate(location.state)
                 else navigate("/");
             });
+    }
+
+    if(user) {
+        if(location.state) navigate(location.state)
+        else navigate("/");
     }
 
     return (
