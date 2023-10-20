@@ -13,7 +13,7 @@ const ProductDetails = () => {
     // const [cart, setCart] = useState({});
 
     useEffect( () => {
-        fetch(`http://localhost:5000/brands/${params.brand}/${params._id}`)
+        fetch(`https://b8a10-brandshop-server-side-olive.vercel.app/brands/${params.brand}/${params._id}`)
             .then(res => res.json())
             .then(data => setDetails(data));
         setChecked("checked");
@@ -37,7 +37,7 @@ const ProductDetails = () => {
 
     const handleAddToCart = () => {
         
-        fetch(`http://localhost:5000/cart/${user.email}`)
+        fetch(`https://b8a10-brandshop-server-side-olive.vercel.app/cart/${user.email}`)
         .then(res => res.json())
         .then(data => {
             console.log(data);
@@ -56,7 +56,7 @@ const ProductDetails = () => {
                 }
             }
 
-            fetch("http://localhost:5000/addtocart", {
+            fetch("https://b8a10-brandshop-server-side-olive.vercel.app/addtocart", {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

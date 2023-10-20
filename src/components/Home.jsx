@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import Banner from "./Banner";
 import BrandCard from "./BrandCard";
 import userLogo from "../assets/user.png";

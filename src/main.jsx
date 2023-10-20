@@ -45,7 +45,7 @@ const router = createBrowserRouter([
 			{
 				path: "/brands/:brand",
 				element: <Products></Products>,
-				loader: ({params}) => fetch(`http://localhost:5000/brands/${params.brand}`)
+				loader: ({params}) => fetch(`https://b8a10-brandshop-server-side-olive.vercel.app/brands/${params.brand}`)
 			},
 			{
 				path: "/brands/:brand/:_id",
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
 			{
 				path: "/brands/:brand/:_id/update",
 				element: <PrivateRoute><Update></Update></PrivateRoute>,
-				loader: ({params}) => fetch(`http://localhost:5000/brands/${params.brand}/${params._id}`)
+				loader: ({params}) => fetch(`https://b8a10-brandshop-server-side-olive.vercel.app/brands/${params.brand}/${params._id}`)
 			}
 		]
     },

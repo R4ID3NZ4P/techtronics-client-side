@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "./AuthProvider";
 
 const Register = () => {
-    const { user, register, googleLogin, update } = useContext(AuthContext);
+    const { user, register, googleLogin, update, logout } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -35,9 +35,11 @@ const Register = () => {
             .then(() => {
                 toast("User successfully registered!");
                 update(name).then(() => {
-                    navigate(0);
+                    toast("Please sign in with your new credentials!");
+                    logout().then(() => {
+                        navigate("/login", {state: location.state});
+                    })
                 });
-                  
             })
             .catch((error) => {
                 if(error.code === "auth/email-already-in-use") toast("User already exists!");
@@ -51,11 +53,6 @@ const Register = () => {
                 if(location.state) navigate(location.state)
                 else navigate("/");
             });
-    }
-
-    if(user) {
-        if(location.state) navigate(location.state)
-        else navigate("/");
     }
 
     return (

@@ -44,7 +44,7 @@ const Update = () => {
             rating
         };
 
-        fetch(`http://localhost:5000/brands/${brand}/${_id}/update`, {
+        fetch(`https://b8a10-brandshop-server-side-olive.vercel.app/brands/${brand}/${_id}/update`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

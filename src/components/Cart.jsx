@@ -7,7 +7,7 @@ const Cart = () => {
     const { user } = useContext(AuthContext);
     const [items, setItems] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/cart/${user.email}`)
+        fetch(`https://b8a10-brandshop-server-side-olive.vercel.app/cart/${user.email}`)
         .then(res => res.json())
         .then(data => {
             console.log(data);
@@ -22,7 +22,7 @@ const Cart = () => {
         const updatedItems = items.filter(item => item != id);
         setItems(updatedItems);
         const updatedCart = {user: user.email, items: updatedItems};
-        fetch("http://localhost:5000/addtocart", {
+        fetch("https://b8a10-brandshop-server-side-olive.vercel.app/addtocart", {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

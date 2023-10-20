@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const CartItem = ({id, remove}) => {
     const [data, setData] = useState(null);
     useEffect(() => {
-        fetch(`http://localhost:5000/cartitem/${id}`)
+        fetch(`https://b8a10-brandshop-server-side-olive.vercel.app/cartitem/${id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

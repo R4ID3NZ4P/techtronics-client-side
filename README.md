@@ -1,8 +1,10 @@
-# React + Vite
+# TechTronics Brandshop Project
+### This project is live [here](https://b8a10-brandshop-dc6f4.web.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+### This simple project offers following features:
+* Email and Password Authentication (Google Account authentication also implemented).
+* Private routes which can only be accessed by a registered user.
+* Functional product cart feature for each user.
+* Light and Dark mode toggle option.
+* Password strength check (checks for if the password has at least 6 characters, at least one uppercase letter and at least one special character) during user registration.
