@@ -13,11 +13,13 @@ import PrivateRoute from "./components/PrivateRoute";
 import Products from "./components/Products";
 import ProductDetails from "./components/ProductDetails";
 import Update from "./components/Update";
+import Error from "./components/Error";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root></Root>,
+		errorElement: <Error></Error>,
 		children: [
 			{
 				path: "/",
