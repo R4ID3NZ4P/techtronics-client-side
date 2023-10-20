@@ -26,7 +26,7 @@ const ProductCard = ({ data }) => {
                 <h2 className="card-title">{name}</h2>
                 <div className="card-actions">
                     <Link to={`/brands/${brand}/${_id}`}><button className="btn bg-cyan-500">Details</button></Link>
-                    <Link to={`/update/${_id}`}><button className="btn bg-cyan-500">Update</button></Link>
+                    <Link to={`/brands/${brand}/${_id}/update`}><button className="btn bg-cyan-500">Update</button></Link>
                 </div>
             </div>
         </div>

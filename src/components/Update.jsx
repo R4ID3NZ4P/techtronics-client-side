@@ -1,6 +1,25 @@
-import { useNavigate } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
-const AddProduct = () => {
+const Update = () => {
+
+    const product = useLoaderData();
+
+    const {
+        _id,
+        name,
+        image,
+        brand,
+        type,
+        price,
+        description,
+        rating
+    } = product;
+
+    const ref = useRef();
+    useEffect(() => {
+        if(rating) ref.current.childNodes[rating-1].setAttribute("checked", true);
+    }, [rating])
 
     const navigate = useNavigate();
 
@@ -15,7 +34,7 @@ const AddProduct = () => {
         const description = form.description.value;
         const rating = form.rating.value;
 
-        const product = {
+        const updatedProduct = {
             name,
             image,
             brand,
@@ -25,17 +44,17 @@ const AddProduct = () => {
             rating
         };
 
-        fetch("http://localhost:5000/addproduct", {
-            method: "POST",
+        fetch(`http://localhost:5000/brands/${brand}/${_id}/update`, {
+            method: "PUT",
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify(product)
+            body: JSON.stringify(updatedProduct)
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                // navigate(-1);
+                navigate(-1);
             })
     };
 
@@ -54,6 +73,7 @@ const AddProduct = () => {
                             placeholder="Image URL"
                             className="input input-bordered input-md w-full"
                             name="image"
+                            defaultValue={image}
                         />
                     </label>
                 </div>
@@ -65,6 +85,7 @@ const AddProduct = () => {
                             placeholder="Product Name"
                             className="input input-bordered input-md w-full"
                             name="name"
+                            defaultValue={name}
                         />
                     </label>
                 </div>
@@ -77,6 +98,7 @@ const AddProduct = () => {
                             placeholder="Brand Name"
                             className="input input-bordered input-md w-full"
                             name="brand"
+                            defaultValue={brand}
                         />
                     </label>
                 </div>
@@ -88,6 +110,7 @@ const AddProduct = () => {
                             placeholder="Category"
                             className="input input-bordered input-md w-full"
                             name="type"
+                            defaultValue={type}
                         />
                     </label>
                 </div>
@@ -101,6 +124,7 @@ const AddProduct = () => {
                                 placeholder="Price"
                                 className="input input-bordered w-full"
                                 name="price"
+                                defaultValue={price}
                             />
                             <span>USD</span>
                         </label>
@@ -114,12 +138,13 @@ const AddProduct = () => {
                             placeholder="Short Description"
                             className="input input-bordered input-md w-full"
                             name="description"
+                            defaultValue={description}
                         />
                     </label>
                 </div>
                 <div className="rating lg:col-span-2 mx-auto flex flex-col items-center">
                     <h2>Rating:</h2>
-                    <div>
+                    <div ref={ref}>
                         <input
                             type="radio"
                             name="rating"
@@ -152,10 +177,14 @@ const AddProduct = () => {
                         />
                     </div>
                 </div>
-                <input type="submit" value="Add" className="btn btn-neutral lg:col-span-2"/>
+                <input
+                    type="submit"
+                    value="Submit"
+                    className="btn btn-neutral lg:col-span-2"
+                />
             </form>
         </div>
     );
 };
 
-export default AddProduct;
+export default Update;
